@@ -5,8 +5,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
 public class Markup {
-    public static Text markup(Text str) {
-        String content = str.getString();
+    public static Text markup(String content) {
         MutableText output = Text.literal("");
 
         StringBuilder buffer = new StringBuilder();

@@ -12,7 +12,7 @@ public class Test implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Configs.registerWritAndLoad();
+		Configs.registerEvents();
 
 		LOGGER.info("Hello, World!");
 	}
