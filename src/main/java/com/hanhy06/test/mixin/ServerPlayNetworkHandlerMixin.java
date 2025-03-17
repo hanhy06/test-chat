@@ -1,6 +1,6 @@
 package com.hanhy06.test.mixin;
 
-import com.hanhy06.test.Markup;
+import com.hanhy06.test.util.Markup;
 import net.minecraft.network.message.FilterMask;
 import net.minecraft.network.message.MessageLink;
 import net.minecraft.network.message.SignedMessage;

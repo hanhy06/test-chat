@@ -1,4 +1,4 @@
-package com.hanhy06.test;
+package com.hanhy06.test.util;
 
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
