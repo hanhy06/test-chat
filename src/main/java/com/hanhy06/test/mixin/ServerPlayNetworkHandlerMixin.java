@@ -1,6 +1,9 @@
 package com.hanhy06.test.mixin;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.hanhy06.test.config.Configs;
+import com.hanhy06.test.util.GeminiAPI;
 import com.hanhy06.test.util.Markup;
 import net.minecraft.network.message.FilterMask;
 import net.minecraft.network.message.MessageBody;
@@ -21,14 +24,26 @@ public class ServerPlayNetworkHandlerMixin {
         String message = original.getContent().getString();
         Text markup = original.getContent();
 
-        if(Configs.filter){
-            for (String word : Configs.words){
+        if(Configs.enableFilter){
+            for (String word : Configs.filterKeywords){
                 message = message.replace(word,"#".repeat(word.length()));
             }
         }
-        if(Configs.markup){
+
+        if(Configs.enableAIFilter && Configs.apiProvider.equals("Google")){
+            try {
+                JsonObject output = GeminiAPI.get(message);
+
+                output.get("text");
+            } catch (Exception e) {
+                throw new RuntimeException("gemini api 요청 실패",e);
+            }
+        }
+
+        if(Configs.enableMarkup){
             markup = Markup.markup(message);
         }
+
 
 
         return new SignedMessage(
