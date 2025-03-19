@@ -88,12 +88,17 @@ public class GeminiAPI {
                           "description": "Overall severity level of the sentence (0: safe, 1: low, 2: medium, 3: high)",
                           "minimum": 0,
                           "maximum": 3
+                        },
+                        "filter_sentence":{
+                            "type": "string",
+                            "description": "Replace inappropriate words in the original sentence with #"
                         }
                       },
                       "required": [
                         "inappropriate_word_count",
                         "inappropriate_words_detected",
-                        "overall_severity_level"
+                        "overall_severity_level",
+                        "filter_sentence"
                       ]
                     }
                   }
