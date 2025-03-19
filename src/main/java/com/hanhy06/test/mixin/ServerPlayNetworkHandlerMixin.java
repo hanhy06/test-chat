@@ -30,13 +30,7 @@ public class ServerPlayNetworkHandlerMixin {
         }
 
         if(Configs.enableAIFilter && Configs.apiProvider.equals("Google")){
-            try {
-                JsonObject output = GeminiAPI.get(message);
-
-                message = Filter.aiBasedFiltering(output,message);
-            } catch (Exception e) {
-                throw new RuntimeException("gemini api 요청 실패",e);
-            }
+            message = Filter.geminiBasedFiltering(message);
         }
 
         if(Configs.enableMarkup){
